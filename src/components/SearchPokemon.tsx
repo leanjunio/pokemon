@@ -1,6 +1,6 @@
 export default function SearchPokemon() {
   return (
-    <form role="search" className="my-4">
+    <form role="search" className="my-5">
       <label className="visually-hidden" htmlFor="pokemon-name">
         Pokemon Name
       </label>
