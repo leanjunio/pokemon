@@ -4,14 +4,15 @@ import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import pluginReactHooks from "eslint-plugin-react-hooks";
-
+import prettier from "eslint-plugin-prettier";
 export default defineConfig([
   {
     files: ["**/*.{jsx,tsx}"],
     plugins: {
       'react': pluginReact,
       'jsx-a11y': jsxA11y,
-      'react-hooks': pluginReactHooks
+      'react-hooks': pluginReactHooks,
+      'prettier': prettier
     },
     extends: [
       "eslint:recommended",
