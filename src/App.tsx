@@ -1,5 +1,6 @@
 import "./App.css";
 import Page from "./components/Page";
+import Pagination from "./components/Pagination";
 import PokemonList from "./components/PokemonList";
 import SearchPokemon from "./components/SearchPokemon";
 export default function App() {
@@ -106,6 +107,7 @@ export default function App() {
     <Page bgVariant="list">
       <SearchPokemon />
       <PokemonList pokemon={pokemon} />
+      <Pagination />
     </Page>
   );
 }

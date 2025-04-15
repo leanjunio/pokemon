@@ -31,3 +31,9 @@
       max-width: 1098px;
     }
 }
+
+/* Override Bootstrap Pagination */
+.pagination {
+    --bs-pagination-bg: transparent;
+    --bs-pagination-color: #222a30;
+}
