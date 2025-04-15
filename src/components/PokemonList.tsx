@@ -8,7 +8,7 @@ type PokemonListProps = {
 
 export default function PokemonList({ pokemon }: PokemonListProps) {
   return (
-    <ul className="row row-cols-4 g-4 list-unstyled">
+    <ul className="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 list-unstyled">
       {pokemon.map((pokemon) => (
         <li key={pokemon.id}>
           <PokemonCard pokemon={pokemon} />
