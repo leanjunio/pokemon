@@ -1,7 +1,7 @@
 import { useQueries, useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useState, useMemo } from "react";
-import { PokemonCardData, PokemonUrls } from "../types/Pokemon";
+import { useEffect, useState } from "react";
+import { PokemonUrls } from "../types/Pokemon";
 
 const fetchPokemonList = async () => {
   const { data } = await axios.get(
@@ -25,8 +25,29 @@ const fetchPokemonDetails = async (url: string) => {
   };
 };
 
+const getPageNumbers = (
+  currentPage: number,
+  totalPages: number,
+  maxVisiblePages: number
+): number[] => {
+  const start = Math.max(currentPage - 1, 1);
+  const pageNumbers = [];
+
+  for (let i = 0; i < maxVisiblePages && start + i <= totalPages; i++) {
+    pageNumbers.push(start + i);
+  }
+
+  return pageNumbers;
+};
+
+const MAX_VISIBLE_PAGES = 5;
+
 export function useFilteredPokemon(search: string) {
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search]);
 
   const {
     data: pokemonList,
@@ -42,19 +63,24 @@ export function useFilteredPokemon(search: string) {
     pokemon.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  const paginatedResults =
+  const currentPageResults =
     filteredResults?.slice((currentPage - 1) * 16, currentPage * 16) ?? [];
 
   const totalPages = Math.ceil((filteredResults?.length ?? 0) / 16);
 
-  // TODO: Add pagination to the results
+  const pageNumbers = getPageNumbers(
+    currentPage,
+    totalPages,
+    MAX_VISIBLE_PAGES
+  );
+
+  const detailsQueries = currentPageResults?.map((pokemon: PokemonUrls) => ({
+    queryKey: ["pokemon-detail", pokemon.url],
+    queryFn: () => fetchPokemonDetails(pokemon.url),
+  }));
 
   const pokemonDetailsQueries = useQueries({
-    queries:
-      paginatedResults?.map((pokemon: PokemonUrls) => ({
-        queryKey: ["pokemon-detail", pokemon.url],
-        queryFn: () => fetchPokemonDetails(pokemon.url),
-      })) ?? [],
+    queries: detailsQueries ?? [],
     combine: (results) => {
       const allSuccessful = results.every((r) => r.isSuccess);
 
@@ -74,5 +100,6 @@ export function useFilteredPokemon(search: string) {
     pokemon: pokemonDetailsQueries.data,
     onPageChange: setCurrentPage,
     currentPage,
+    pageNumbers,
   };
 }
