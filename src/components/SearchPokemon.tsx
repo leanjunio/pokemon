@@ -1,4 +1,8 @@
-export default function SearchPokemon() {
+type SearchPokemonProps = {
+  onSearch: (search: string) => void;
+};
+
+export default function SearchPokemon({ onSearch }: SearchPokemonProps) {
   return (
     <form role="search" className="my-5">
       <label className="visually-hidden" htmlFor="pokemon-name">
@@ -22,6 +26,7 @@ export default function SearchPokemon() {
           className="form-control border-start-0 fs-6 px-1 py-2"
           id="pokemon-name"
           placeholder="Search"
+          onChange={(e) => onSearch(e.target.value)}
         />
       </div>
     </form>

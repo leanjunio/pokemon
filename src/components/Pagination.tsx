@@ -1,4 +1,12 @@
-export default function Pagination() {
+import { useFilteredPokemon } from "../hooks/useFilteredPokemon";
+
+export default function Pagination({
+  currentPage,
+  onPageChange,
+}: {
+  currentPage: number;
+  onPageChange: (page: number) => void;
+}) {
   return (
     <nav
       className="d-flex justify-content-center"
