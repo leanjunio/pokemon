@@ -1,4 +1,4 @@
-import Page from '../components/Page'
+import Page from '../components/common/Page'
 import PokemonController from '../containers/PokemonController'
 
 export default function Browse() {

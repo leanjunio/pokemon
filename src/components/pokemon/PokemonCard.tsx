@@ -1,6 +1,6 @@
-import type { PokemonCardData } from '../types/Pokemon'
-import Card from './Card'
-import { capitalize } from '../utils/string'
+import type { PokemonCardData } from '../../types/Pokemon'
+import Card from '../common/Card'
+import { capitalize } from '../../utils/string'
 
 type PokemonCardProps = {
   pokemon: PokemonCardData

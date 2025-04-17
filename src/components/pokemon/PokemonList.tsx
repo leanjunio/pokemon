@@ -1,7 +1,7 @@
-import React from 'react'
-import { PokemonCardData } from '../types/Pokemon'
+import { PokemonCardData } from '../../types/Pokemon'
 import PokemonCard from './PokemonCard'
-import LoadingSpinner from './LoadingSpinner'
+import LoadingSpinner from '../common/LoadingSpinner'
+import List from '../common/List'
 
 type PokemonListProps = {
   pokemon?: PokemonCardData[]
@@ -17,13 +17,5 @@ export default function PokemonList({ pokemon, isLoading }: PokemonListProps) {
     )
   }
 
-  return (
-    <ul className="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 list-unstyled">
-      {pokemon.map((pokemon) => (
-        <li key={pokemon.id}>
-          <PokemonCard pokemon={pokemon} />
-        </li>
-      ))}
-    </ul>
-  )
+  return <List<PokemonCardData> items={pokemon} listItem={(pokemon) => <PokemonCard pokemon={pokemon} />} />
 }

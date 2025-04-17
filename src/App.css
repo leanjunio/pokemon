@@ -6,11 +6,11 @@
     --pokemon-list-bg: #ebedf0;
 }
 
-.bg-pokemon-card {
+.bg-card {
     background-color: var(--bs-image-gray);
 }
 
-.bg-pokemon-card-border {
+.bg-card-border {
     border: 1px solid var(--bs-image-gray-border);
 }
 
