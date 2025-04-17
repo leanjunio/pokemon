@@ -26,7 +26,11 @@ export type PokemonDetailsResponse = {
       name: string
     }
   }[]
-  abilities: string[]
+  abilities: {
+    ability: {
+      name: string
+    }
+  }[]
   sprites: {
     other: {
       'official-artwork': {
