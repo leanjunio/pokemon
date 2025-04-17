@@ -4,6 +4,8 @@
     --bs-image-gray: #d9d9d9;
     --bs-image-gray-border: #d0d5da;
     --pokemon-list-bg: #ebedf0;
+    --pokemon-badges-bg: #e6f1fd;
+    --pokemon-badges-text: #0072ee;
 }
 
 .bg-card {
@@ -24,6 +26,11 @@
 
 .w-80 {
     width: 80%;
+}
+
+.bg-badges {
+    background-color: var(--pokemon-badges-bg);
+    color: var(--pokemon-badges-text);
 }
 
 @media (min-width: 1400px) {

@@ -20,7 +20,12 @@ export type PokemonDetailsResponse = {
   id: number
   imageUrl: string
   name: string
-  types: string[]
+  types: {
+    slot: number
+    type: {
+      name: string
+    }
+  }[]
   abilities: string[]
   sprites: {
     other: {
@@ -30,11 +35,9 @@ export type PokemonDetailsResponse = {
     }
   }
   stats: {
-    hp: number
-    attack: number
-    defense: number
-    specialAttack: number
-    specialDefense: number
-    speed: number
-  }
+    base_stat: number
+    stat: {
+      name: string
+    }
+  }[]
 }
