@@ -1,9 +1,18 @@
+import SearchIcon from '../../assets/search.svg?react'
+
 type SearchProps = {
   name: string
   placeholder: string
   onSearch: (search: string) => void
 }
 
+/**
+ * Renders a search input
+ *
+ * @param {string} name - The name of the search input
+ * @param {string} placeholder - The placeholder text of the search input
+ * @param {function} onSearch - The function to call when the search input changes
+ */
 export default function Search({ name, placeholder, onSearch }: SearchProps) {
   return (
     <form role="search" className="my-5">
@@ -12,16 +21,7 @@ export default function Search({ name, placeholder, onSearch }: SearchProps) {
       </label>
       <div className="input-group">
         <span className="input-group-text bg-white border-end-0 ps-3">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="14"
-            height="14"
-            fill="currentColor"
-            className="bi bi-search text-secondary opacity-50"
-            viewBox="0 0 16 16"
-          >
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-          </svg>
+          <SearchIcon className="text-secondary opacity-50" />
         </span>
         <input
           type="search"
