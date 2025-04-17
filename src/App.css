@@ -6,6 +6,7 @@
     --pokemon-list-bg: #ebedf0;
     --pokemon-badges-bg: #e6f1fd;
     --pokemon-badges-text: #0072ee;
+    --pokemon-stats-bg: #f2f3f5;
 }
 
 .bg-card {
@@ -31,6 +32,10 @@
 .bg-badges {
     background-color: var(--pokemon-badges-bg);
     color: var(--pokemon-badges-text);
+}
+
+.bg-stats {
+    background-color: var(--pokemon-stats-bg);
 }
 
 @media (min-width: 1400px) {

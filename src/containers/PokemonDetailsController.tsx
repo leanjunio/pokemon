@@ -4,6 +4,8 @@ import { PokemonDetailsResponse } from '../types/Pokemon'
 import { useQueryData } from '../hooks/useQueryData'
 import PokemonImage from '../components/pokemon/PokemonImage'
 import BasicInfo from '../components/pokemon/BasicInfo'
+import Stats from '../components/pokemon/Stats'
+
 export default function PokemonDetailsController() {
   const { id } = useParams()
   const pokemonUrl = `${API_CONFIG.BASE_URL}/pokemon/${id}/`
@@ -21,7 +23,16 @@ export default function PokemonDetailsController() {
           <PokemonImage altText={pokemon.name} imageUrl={pokemon.sprites.other['official-artwork'].front_default} />
         </div>
         <div className="col">
-          <BasicInfo id={pokemon.id} name={pokemon.name} types={pokemon.types} />
+          <div className="row">
+            <div className="col">
+              <BasicInfo id={pokemon.id} name={pokemon.name} types={pokemon.types} />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <Stats stats={pokemon.stats} />
+            </div>
+          </div>
         </div>
       </div>
     </div>
