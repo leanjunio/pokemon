@@ -1,105 +1,46 @@
-import { useQueries, useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { PokemonUrls } from "../types/Pokemon";
+import { useEffect, useState } from 'react'
+import { usePagination } from './usePagination'
+import { usePokemonDetails } from './usePokemonDetails'
+import { usePokemonList } from './usePokemonList'
+import { filterBySearchedName } from '../utils/search'
+import { POKEMON_CONFIG } from '../lib/constants'
 
-const fetchPokemonList = async () => {
-  const { data } = await axios.get(
-    "https://pokeapi.co/api/v2/pokemon/?limit=1302"
-  );
-  return data.results;
-};
-
-const fetchPokemonDetails = async (url: string) => {
-  const {
-    data: { id, sprites, name, types, abilities, stats },
-  } = await axios.get(url);
-
-  return {
-    id,
-    imageUrl: sprites.other["official-artwork"].front_default,
-    name,
-    types,
-    abilities,
-    stats,
-  };
-};
-
-const getPageNumbers = (
-  currentPage: number,
-  totalPages: number,
-  maxVisiblePages: number
-): number[] => {
-  const start = Math.max(currentPage - 1, 1);
-  const pageNumbers = [];
-
-  for (let i = 0; i < maxVisiblePages && start + i <= totalPages; i++) {
-    pageNumbers.push(start + i);
-  }
-
-  return pageNumbers;
-};
-
-const MAX_VISIBLE_PAGES = 5;
-
+/**
+ * Hook to filter pokemon results based on the provided search query
+ * @param search - The search query
+ * @returns The filtered and paginated pokemon results
+ */
 export function useFilteredPokemon(search: string) {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [search]);
+    setCurrentPage(1)
+  }, [search])
+
+  const { data: pokemonList, isLoading: isLoadingPokemonList, isError: isErrorPokemonList } = usePokemonList()
+  const filteredResults = filterBySearchedName(pokemonList, search)
+  const { currentPageItems: currentPageResults, pageNumbers } = usePagination(
+    filteredResults,
+    currentPage,
+    setCurrentPage,
+    POKEMON_CONFIG.MAX_VISIBLE_PAGES,
+    POKEMON_CONFIG.ITEMS_PER_PAGE,
+  )
 
   const {
-    data: pokemonList,
-    isLoading: isLoadingPokemonList,
-    isError: isErrorPokemonList,
-  } = useQuery<PokemonUrls[]>({
-    queryKey: ["pokemon-list"],
-    queryFn: fetchPokemonList,
-    staleTime: Infinity,
-  });
-
-  const filteredResults = pokemonList?.filter((pokemon: PokemonUrls) =>
-    pokemon.name.toLowerCase().includes(search.toLowerCase())
-  );
-
-  const currentPageResults =
-    filteredResults?.slice((currentPage - 1) * 16, currentPage * 16) ?? [];
-
-  const totalPages = Math.ceil((filteredResults?.length ?? 0) / 16);
-
-  const pageNumbers = getPageNumbers(
-    currentPage,
-    totalPages,
-    MAX_VISIBLE_PAGES
-  );
-
-  const detailsQueries = currentPageResults?.map((pokemon: PokemonUrls) => ({
-    queryKey: ["pokemon-detail", pokemon.url],
-    queryFn: () => fetchPokemonDetails(pokemon.url),
-  }));
-
-  const pokemonDetailsQueries = useQueries({
-    queries: detailsQueries ?? [],
-    combine: (results) => {
-      const allSuccessful = results.every((r) => r.isSuccess);
-
-      return {
-        isLoading: results.some((r) => r.isPending),
-        isSuccess: allSuccessful,
-        isError: results.some((r) => r.isError),
-        data: allSuccessful ? results.map((r) => r.data) : undefined,
-      };
-    },
-  });
+    isLoading: isLoadingPokemonDetails,
+    isError: isErrorPokemonDetails,
+    isSuccess: isSuccessPokemonDetails,
+    data: pokemonDetails,
+  } = usePokemonDetails(currentPageResults)
 
   return {
-    isLoading: isLoadingPokemonList || pokemonDetailsQueries.isLoading,
-    isError: isErrorPokemonList || pokemonDetailsQueries.isError,
-    isSuccess: pokemonDetailsQueries.isSuccess,
-    pokemon: pokemonDetailsQueries.data,
+    isLoading: isLoadingPokemonList || isLoadingPokemonDetails,
+    isError: isErrorPokemonList || isErrorPokemonDetails,
+    isSuccess: isSuccessPokemonDetails,
+    pokemon: pokemonDetails,
     onPageChange: setCurrentPage,
     currentPage,
     pageNumbers,
-  };
+  }
 }

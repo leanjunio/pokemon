@@ -1,21 +1,20 @@
-import React from "react";
-import { PokemonCardData } from "../types/Pokemon";
-import PokemonCard from "./PokemonCard";
+import React from 'react'
+import { PokemonCardData } from '../types/Pokemon'
+import PokemonCard from './PokemonCard'
+import LoadingSpinner from './LoadingSpinner'
 
 type PokemonListProps = {
-  pokemon?: PokemonCardData[];
-  isLoading: boolean;
-};
+  pokemon?: PokemonCardData[]
+  isLoading: boolean
+}
 
 export default function PokemonList({ pokemon, isLoading }: PokemonListProps) {
   if (isLoading || !pokemon) {
     return (
-      <div className="d-flex justify-content-center">
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
+      <div className="min-vh-100 d-flex justify-content-center align-items-center">
+        <LoadingSpinner />
       </div>
-    );
+    )
   }
 
   return (
@@ -26,5 +25,5 @@ export default function PokemonList({ pokemon, isLoading }: PokemonListProps) {
         </li>
       ))}
     </ul>
-  );
+  )
 }

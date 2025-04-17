@@ -1,16 +1,15 @@
-import Navbar from "./Navbar";
+import Navbar from './Navbar'
 
-export default function Page({
-  bgVariant = "list",
-  children,
-}: {
-  bgVariant: "list" | "details";
-  children: React.ReactNode;
-}) {
+type PageProps = {
+  bgVariant: 'list' | 'details'
+  children: React.ReactNode
+}
+
+export default function Page({ bgVariant = 'list', children }: PageProps) {
   return (
     <div className={`bg-${bgVariant}`}>
       <Navbar />
       <main className="container-xl">{children}</main>
     </div>
-  );
+  )
 }
