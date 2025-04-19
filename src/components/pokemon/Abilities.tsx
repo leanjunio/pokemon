@@ -7,7 +7,7 @@ export default function Abilities({ abilities }: { abilities: PokemonDetailsResp
       <ul>
         {abilities.map((ability) => (
           <li key={ability.ability.name}>
-            <p className="m-0 text-abilities">{ability.ability.name}</p>
+            <p className="m-0 pokemon-text-dark">{ability.ability.name}</p>
           </li>
         ))}
       </ul>

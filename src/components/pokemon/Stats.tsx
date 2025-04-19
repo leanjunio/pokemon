@@ -10,7 +10,7 @@ export default function Stats({ stats }: StatsProps) {
       {stats.map((stat) => (
         <div className="col d-flex" key={stat.name}>
           <p className="fw-bold mb-0 me-2">{stat.name}:</p>
-          <p className="mb-0 text-abilities">{stat.value}</p>
+          <p className="mb-0 pokemon-text-dark">{stat.value}</p>
         </div>
       ))}
     </div>
