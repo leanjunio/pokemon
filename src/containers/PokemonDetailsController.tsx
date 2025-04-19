@@ -1,5 +1,4 @@
-import { useParams } from 'react-router'
-import { API_CONFIG } from '@/lib/constants'
+import { useParams, Navigate } from 'react-router'
 import { PokemonDetailsResponse } from '@/types/Pokemon'
 import { useQueryData } from '@/hooks/useQueryData'
 import PokemonImage from '@/components/pokemon/PokemonImage'
@@ -11,12 +10,16 @@ import Abilities from '@/components/pokemon/Abilities'
 import Breadcrumb from '@/components/common/Breadcrumb'
 
 export default function PokemonDetailsController() {
-  const { id } = useParams()
-  const pokemonUrl = `${API_CONFIG.BASE_URL}/pokemon/${id}/`
-  const pokemon = useQueryData<PokemonDetailsResponse>('pokemon-detail', pokemonUrl)
+  const { name } = useParams()
+
+  if (!name) {
+    return <Navigate to="/" />
+  }
+
+  const pokemon = useQueryData<PokemonDetailsResponse>('pokemon-detail', name)
 
   if (!pokemon) {
-    return <div>Loading...</div>
+    return <Navigate to="/" />
   }
 
   const { height, weight, base_experience, abilities } = pokemon

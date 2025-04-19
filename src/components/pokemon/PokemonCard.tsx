@@ -12,7 +12,7 @@ export default function PokemonCard({ pokemon }: PokemonCardProps) {
       text={capitalize(pokemon.name)}
       imageUrl={pokemon.imageUrl}
       altText={`Image of ${pokemon.name}`}
-      to={`/pokemon/${pokemon.id}`}
+      to={`/${pokemon.name}`}
     />
   )
 }
