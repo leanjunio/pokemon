@@ -7,7 +7,7 @@ import BasicInfo from '@/components/pokemon/BasicInfo'
 import Stats from '@/components/pokemon/Stats'
 import { combineStats } from '@/pokemon/transformation'
 import { getLocalizedStats } from '@/pokemon/localization/stats'
-
+import Abilities from '@/components/pokemon/Abilities'
 export default function PokemonDetailsController() {
   const { id } = useParams()
   const pokemonUrl = `${API_CONFIG.BASE_URL}/pokemon/${id}/`
@@ -17,7 +17,7 @@ export default function PokemonDetailsController() {
     return <div>Loading...</div>
   }
 
-  const { height, weight, base_experience } = pokemon
+  const { height, weight, base_experience, abilities } = pokemon
 
   const allStats = combineStats(pokemon.stats, {
     height,
@@ -39,9 +39,16 @@ export default function PokemonDetailsController() {
               <BasicInfo id={pokemon.id} name={pokemon.name} types={pokemon.types} />
             </div>
           </div>
+          <hr />
           <div className="row">
             <div className="col">
               <Stats stats={formattedStats} />
+            </div>
+          </div>
+          <hr />
+          <div className="row">
+            <div className="col">
+              <Abilities abilities={abilities} />
             </div>
           </div>
         </div>

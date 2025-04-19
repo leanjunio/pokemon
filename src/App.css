@@ -7,6 +7,7 @@
     --pokemon-badges-bg: #e6f1fd;
     --pokemon-badges-text: #0072ee;
     --pokemon-stats-bg: #f2f3f5;
+    --pokemon-abilities-text: #424a52;
 }
 
 .bg-card {
@@ -48,4 +49,8 @@
 .pagination {
     --bs-pagination-bg: transparent;
     --bs-pagination-color: #222a30;
+}
+
+.text-abilities {
+    color: var(--pokemon-abilities-text);
 }
