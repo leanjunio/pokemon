@@ -21,12 +21,7 @@ export function useFilteredPokemon(search: string) {
   const { data: pokemonList = [], isLoading: isLoadingPokemonList, isError: isErrorPokemonList } = usePokemonList()
   const sortedPokemonList = useSortPokemon(pokemonList, POKEMON_CONFIG.DEFAULT_SORT_BY)
   const filteredResults = filterBySearchedName(sortedPokemonList, search)
-  const {
-    currentPageItems: currentPageResults,
-    pageNumbers,
-    goToFirstPage,
-    goToLastPage,
-  } = usePagination(
+  const { currentPageItems: currentPageResults, navigation } = usePagination(
     filteredResults,
     currentPage,
     setCurrentPage,
@@ -48,8 +43,6 @@ export function useFilteredPokemon(search: string) {
     pokemon: pokemonDetails,
     onPageChange: setCurrentPage,
     currentPage,
-    pageNumbers,
-    goToFirstPage,
-    goToLastPage,
+    navigation,
   }
 }

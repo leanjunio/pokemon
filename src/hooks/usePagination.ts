@@ -40,10 +40,12 @@ export function usePagination<T>(
   return {
     currentPageItems,
     totalPages,
-    pageNumbers,
     currentPage,
     setCurrentPage,
-    goToFirstPage,
-    goToLastPage,
+    navigation: {
+      goToFirstPage,
+      goToLastPage,
+      pageNumbers,
+    },
   }
 }
