@@ -1,7 +1,7 @@
-import { PokemonCardData } from '../../types/Pokemon'
-import PokemonCard from './PokemonCard'
-import LoadingSpinner from '../common/LoadingSpinner'
-import List from '../common/List'
+import { PokemonCardData } from '@/types/Pokemon'
+import PokemonCard from '@/components/pokemon/PokemonCard'
+import LoadingSpinner from '@/components/common/LoadingSpinner'
+import List from '@/components/common/List'
 
 type PokemonListProps = {
   pokemon?: PokemonCardData[]

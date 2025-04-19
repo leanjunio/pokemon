@@ -1,4 +1,4 @@
-import Search from '../common/Search'
+import Search from '@/components/common/Search'
 
 type SearchPokemonProps = {
   onSearch: (search: string) => void

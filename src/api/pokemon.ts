@@ -1,5 +1,5 @@
-import { PokemonListResponse, PokemonDetailsResponse } from '../types/Pokemon'
-import { apiRequest } from './client'
+import { PokemonListResponse, PokemonDetailsResponse } from '@/types/Pokemon'
+import { apiRequest } from '@/api/client'
 
 const ENDPOINTS = {
   list: '/pokemon',

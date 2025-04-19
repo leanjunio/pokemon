@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { usePagination } from './usePagination'
-import { usePokemonDetails } from './usePokemonDetails'
-import { usePokemonList } from './usePokemonList'
-import { filterBySearchedName } from '../utils/search'
-import { POKEMON_CONFIG } from '../lib/constants'
+import { usePagination } from '@/hooks/usePagination'
+import { usePokemonDetails } from '@/hooks/usePokemonDetails'
+import { usePokemonList } from '@/hooks/usePokemonList'
+import { filterBySearchedName } from '@/utils/search'
+import { POKEMON_CONFIG } from '@/lib/constants'
 
 /**
  * Hook to filter pokemon results based on the provided search query

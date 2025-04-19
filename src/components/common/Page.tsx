@@ -1,5 +1,5 @@
-import PokemonIcon from '../pokemon/PokemonIcon'
-import Navbar from './Navbar'
+import PokemonIcon from '@/components/pokemon/PokemonIcon'
+import Navbar from '@/components/common/Navbar'
 
 type PageProps = {
   bgVariant: 'list' | 'details'

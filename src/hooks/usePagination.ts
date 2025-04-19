@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { getCurrentPageItems, getPageNumbers, getTotalPages } from '../utils/pagination'
+import { getCurrentPageItems, getPageNumbers, getTotalPages } from '@/utils/pagination'
 
 const DEFAULT_CURRENT_PAGE = 1
 

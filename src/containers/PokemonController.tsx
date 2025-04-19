@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import Pagination from '../components/common/Pagination'
-import SearchPokemon from '../components/pokemon/SearchPokemon'
-import { useFilteredPokemon } from '../hooks/useFilteredPokemon'
-import PokemonList from '../components/pokemon/PokemonList'
+import Pagination from '@/components/common/Pagination'
+import SearchPokemon from '@/components/pokemon/SearchPokemon'
+import { useFilteredPokemon } from '@/hooks/useFilteredPokemon'
+import PokemonList from '@/components/pokemon/PokemonList'
 
 export default function PokemonController() {
   const [search, setSearch] = useState('')

@@ -1,5 +1,6 @@
-import { capitalize } from '../../utils/string'
-import Pill from '../common/Pill'
+import { capitalize } from '@/utils/string'
+import Pill from '@/components/common/Pill'
+
 type BasicInfoProps = {
   id: number
   name: string

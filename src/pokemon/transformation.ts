@@ -1,4 +1,4 @@
-import { PokemonDetailsResponse } from '../types/Pokemon'
+import { PokemonDetailsResponse } from '@/types/Pokemon'
 
 export const transformPokemonDetails = (data: PokemonDetailsResponse) => ({
   id: data.id,

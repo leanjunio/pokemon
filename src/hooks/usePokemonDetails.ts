@@ -1,7 +1,7 @@
 import { useQueries } from '@tanstack/react-query'
-import { PokemonUrls } from '../types/Pokemon'
-import { pokemonApi } from '../api/pokemon'
-import { transformPokemonDetails } from '../pokemon/transformation'
+import { PokemonUrls } from '@/types/Pokemon'
+import { pokemonApi } from '@/api/pokemon'
+import { transformPokemonDetails } from '@/pokemon/transformation'
 
 export function usePokemonDetails(pokemonUrls: PokemonUrls[]) {
   const detailsQueries = pokemonUrls?.map((pokemon) => ({

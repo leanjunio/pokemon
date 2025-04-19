@@ -1,12 +1,12 @@
 import { useParams } from 'react-router'
-import { API_CONFIG } from '../lib/constants'
-import { PokemonDetailsResponse } from '../types/Pokemon'
-import { useQueryData } from '../hooks/useQueryData'
-import PokemonImage from '../components/pokemon/PokemonImage'
-import BasicInfo from '../components/pokemon/BasicInfo'
-import Stats from '../components/pokemon/Stats'
-import { extractStats } from '../pokemon/transformation'
-import { localizedStats } from '../pokemon/localization/stats'
+import { API_CONFIG } from '@/lib/constants'
+import { PokemonDetailsResponse } from '@/types/Pokemon'
+import { useQueryData } from '@/hooks/useQueryData'
+import PokemonImage from '@/components/pokemon/PokemonImage'
+import BasicInfo from '@/components/pokemon/BasicInfo'
+import Stats from '@/components/pokemon/Stats'
+import { extractStats } from '@/pokemon/transformation'
+import { localizedStats } from '@/pokemon/localization/stats'
 
 export default function PokemonDetailsController() {
   const { id } = useParams()
