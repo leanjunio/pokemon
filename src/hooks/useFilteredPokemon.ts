@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { usePagination } from '@/hooks/usePagination'
 import { usePokemonDetails } from '@/hooks/usePokemonDetails'
 import { usePokemonList } from '@/hooks/usePokemonList'
 import { filterBySearchedName } from '@/utils/search'
 import { POKEMON_CONFIG } from '@/lib/constants'
+import { useSortPokemon } from '@/hooks/useSortPokemon'
 
 /**
  * Hook to filter pokemon results based on the provided search query
@@ -17,8 +18,9 @@ export function useFilteredPokemon(search: string) {
     setCurrentPage(1)
   }, [search])
 
-  const { data: pokemonList, isLoading: isLoadingPokemonList, isError: isErrorPokemonList } = usePokemonList()
-  const filteredResults = filterBySearchedName(pokemonList, search)
+  const { data: pokemonList = [], isLoading: isLoadingPokemonList, isError: isErrorPokemonList } = usePokemonList()
+  const sortedPokemonList = useSortPokemon(pokemonList, POKEMON_CONFIG.DEFAULT_SORT_BY)
+  const filteredResults = filterBySearchedName(sortedPokemonList, search)
   const { currentPageItems: currentPageResults, pageNumbers } = usePagination(
     filteredResults,
     currentPage,

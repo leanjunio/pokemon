@@ -4,7 +4,7 @@ import { pokemonApi } from '@/api/pokemon'
 import { transformPokemonDetails } from '@/pokemon/transformation'
 
 export function usePokemonDetails(pokemonUrls: PokemonUrls[]) {
-  const detailsQueries = pokemonUrls?.map((pokemon) => ({
+  const detailsQueries = pokemonUrls.map((pokemon) => ({
     queryKey: ['pokemon-detail', pokemon.url],
     queryFn: () => pokemonApi.getPokemonDetails(pokemon.url),
     staleTime: Infinity,

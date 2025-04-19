@@ -13,7 +13,7 @@ const DEFAULT_CURRENT_PAGE = 1
  * @param itemsPerPage - The number of items to display per page
  */
 export function usePagination<T>(
-  items: T[] | undefined,
+  items: T[] = [],
   currentPage = DEFAULT_CURRENT_PAGE,
   setCurrentPage: (page: number) => void,
   maxVisiblePages: number,

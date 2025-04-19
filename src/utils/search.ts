@@ -4,6 +4,6 @@
  * @param search - The search term
  * @returns The filtered list of items
  */
-export function filterBySearchedName<T extends { name: string }>(list: T[] | undefined, search: string) {
-  return list?.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
+export function filterBySearchedName<T extends { name: string }>(list: T[], search: string) {
+  return list.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
 }
