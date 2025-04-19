@@ -9,3 +9,16 @@ export const localizedStats: Record<string, string> = {
   weight: 'Weight',
   base_experience: 'Base Experience',
 }
+
+/**
+ * Localize the stats of a pokemon
+ *
+ * @param stats - The stats of a pokemon
+ * @returns The localized stats
+ */
+export function getLocalizedStats(stats: { name: string; value: number }[]) {
+  return stats.map((stat) => ({
+    name: localizedStats[stat.name],
+    value: stat.value,
+  }))
+}

@@ -5,8 +5,8 @@ import { useQueryData } from '@/hooks/useQueryData'
 import PokemonImage from '@/components/pokemon/PokemonImage'
 import BasicInfo from '@/components/pokemon/BasicInfo'
 import Stats from '@/components/pokemon/Stats'
-import { extractStats } from '@/pokemon/transformation'
-import { localizedStats } from '@/pokemon/localization/stats'
+import { combineStats } from '@/pokemon/transformation'
+import { getLocalizedStats } from '@/pokemon/localization/stats'
 
 export default function PokemonDetailsController() {
   const { id } = useParams()
@@ -17,19 +17,15 @@ export default function PokemonDetailsController() {
     return <div>Loading...</div>
   }
 
-  const stats = extractStats(pokemon.stats)
+  const { height, weight, base_experience } = pokemon
 
-  const allStats = [
-    ...stats,
-    { name: 'height', value: pokemon.height },
-    { name: 'weight', value: pokemon.weight },
-    { name: 'base_experience', value: pokemon.base_experience },
-  ]
+  const allStats = combineStats(pokemon.stats, {
+    height,
+    weight,
+    base_experience,
+  })
 
-  const formattedStats = allStats.map((stat) => ({
-    name: localizedStats[stat.name],
-    value: stat.value,
-  }))
+  const formattedStats = getLocalizedStats(allStats)
 
   return (
     <div className="container">
