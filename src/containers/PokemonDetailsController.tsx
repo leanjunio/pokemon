@@ -8,6 +8,8 @@ import Stats from '@/components/pokemon/Stats'
 import { combineStats } from '@/pokemon/transformation'
 import { getLocalizedStats } from '@/pokemon/localization/stats'
 import Abilities from '@/components/pokemon/Abilities'
+import Breadcrumb from '@/components/common/Breadcrumb'
+
 export default function PokemonDetailsController() {
   const { id } = useParams()
   const pokemonUrl = `${API_CONFIG.BASE_URL}/pokemon/${id}/`
@@ -29,6 +31,7 @@ export default function PokemonDetailsController() {
 
   return (
     <div className="container">
+      <Breadcrumb />
       <div className="row gap-5">
         <div className="col">
           <PokemonImage altText={pokemon.name} imageUrl={pokemon.sprites.other['official-artwork'].front_default} />
