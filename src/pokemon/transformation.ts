@@ -8,3 +8,10 @@ export const transformPokemonDetails = (data: PokemonDetailsResponse) => ({
   abilities: data.abilities,
   stats: data.stats,
 })
+
+export function extractStats(stats: PokemonDetailsResponse['stats']) {
+  return stats.map((stat) => ({
+    name: stat.stat.name,
+    value: stat.base_stat,
+  }))
+}

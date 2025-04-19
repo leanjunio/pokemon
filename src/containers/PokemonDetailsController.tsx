@@ -5,16 +5,31 @@ import { useQueryData } from '../hooks/useQueryData'
 import PokemonImage from '../components/pokemon/PokemonImage'
 import BasicInfo from '../components/pokemon/BasicInfo'
 import Stats from '../components/pokemon/Stats'
+import { extractStats } from '../pokemon/transformation'
+import { localizedStats } from '../pokemon/localization/stats'
 
 export default function PokemonDetailsController() {
   const { id } = useParams()
   const pokemonUrl = `${API_CONFIG.BASE_URL}/pokemon/${id}/`
   const pokemon = useQueryData<PokemonDetailsResponse>('pokemon-detail', pokemonUrl)
-  console.log({ pokemon })
 
   if (!pokemon) {
     return <div>Loading...</div>
   }
+
+  const stats = extractStats(pokemon.stats)
+
+  const allStats = [
+    ...stats,
+    { name: 'height', value: pokemon.height },
+    { name: 'weight', value: pokemon.weight },
+    { name: 'base_experience', value: pokemon.base_experience },
+  ]
+
+  const formattedStats = allStats.map((stat) => ({
+    name: localizedStats[stat.name],
+    value: stat.value,
+  }))
 
   return (
     <div className="container">
@@ -30,7 +45,7 @@ export default function PokemonDetailsController() {
           </div>
           <div className="row">
             <div className="col">
-              <Stats stats={pokemon.stats} />
+              <Stats stats={formattedStats} />
             </div>
           </div>
         </div>

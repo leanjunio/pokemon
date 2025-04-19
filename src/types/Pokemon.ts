@@ -44,4 +44,7 @@ export type PokemonDetailsResponse = {
       name: string
     }
   }[]
+  height: number
+  weight: number
+  base_experience: number
 }
