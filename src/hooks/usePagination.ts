@@ -29,11 +29,21 @@ export function usePagination<T>(
     [currentPage, totalPages, maxVisiblePages],
   )
 
+  const goToFirstPage = () => {
+    setCurrentPage(1)
+  }
+
+  const goToLastPage = () => {
+    setCurrentPage(totalPages)
+  }
+
   return {
     currentPageItems,
     totalPages,
     pageNumbers,
     currentPage,
     setCurrentPage,
+    goToFirstPage,
+    goToLastPage,
   }
 }
