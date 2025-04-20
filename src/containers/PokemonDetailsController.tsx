@@ -36,7 +36,7 @@ export default function PokemonDetailsController() {
     <div className="my-5">
       <Breadcrumb />
       <div className="row justify-content-between">
-        <div className="col-12 col-lg-7 text-sm-center text-lg-start">
+        <div className="col-12 col-lg-7 text-sm-center text-lg-start mb-5">
           <PokemonImage altText={pokemon.name} imageUrl={pokemon.sprites.other['official-artwork'].front_default} />
         </div>
         <div className="col-12 col-lg-5">
