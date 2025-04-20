@@ -4,7 +4,7 @@ type NavbarProps = {
 
 export default function Navbar({ icon }: NavbarProps) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+    <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top border-bottom">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           {icon}

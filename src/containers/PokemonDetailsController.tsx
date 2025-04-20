@@ -33,13 +33,13 @@ export default function PokemonDetailsController() {
   const formattedStats = getLocalizedStats(allStats)
 
   return (
-    <div className="container">
+    <div className="my-5">
       <Breadcrumb />
-      <div className="row gap-5">
-        <div className="col">
+      <div className="row justify-content-between">
+        <div className="col-12 col-lg-7">
           <PokemonImage altText={pokemon.name} imageUrl={pokemon.sprites.other['official-artwork'].front_default} />
         </div>
-        <div className="col">
+        <div className="col-12 col-lg-5">
           <div className="row">
             <div className="col">
               <BasicInfo id={pokemon.id} name={pokemon.name} types={pokemon.types} />

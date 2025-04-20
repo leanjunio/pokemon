@@ -4,13 +4,14 @@ import Navbar from '@/components/common/Navbar'
 type PageProps = {
   bgVariant: 'list' | 'details'
   children: React.ReactNode
+  className?: string
 }
 
-export default function Page({ bgVariant = 'list', children }: PageProps) {
+export default function Page({ bgVariant = 'list', children, className }: PageProps) {
   return (
     <div className={`bg-${bgVariant}`}>
       <Navbar icon={<PokemonIcon />} />
-      <main className="container-xl">{children}</main>
+      <main className={className}>{children}</main>
     </div>
   )
 }

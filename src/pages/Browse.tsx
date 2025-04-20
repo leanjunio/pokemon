@@ -3,7 +3,7 @@ import PokemonController from '@/containers/PokemonController'
 
 export default function Browse() {
   return (
-    <Page bgVariant="list">
+    <Page className="container-xl" bgVariant="list">
       <PokemonController />
     </Page>
   )

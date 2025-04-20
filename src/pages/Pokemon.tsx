@@ -3,7 +3,7 @@ import PokemonDetailsController from '@/containers/PokemonDetailsController'
 
 export default function Pokemon() {
   return (
-    <Page bgVariant="details">
+    <Page className="container-xxl" bgVariant="details">
       <PokemonDetailsController />
     </Page>
   )
