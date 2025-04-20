@@ -39,7 +39,7 @@ export default function PokemonDetailsController() {
         <div className="col-12 col-lg-7 text-sm-center text-lg-start mb-5">
           <PokemonImage altText={pokemon.name} imageUrl={pokemon.sprites.other['official-artwork'].front_default} />
         </div>
-        <div className="col-12 col-lg-5">
+        <div className="col-12 col-lg-5 px-md-5 px-lg-0">
           <div className="row">
             <div className="col">
               <BasicInfo id={pokemon.id} name={pokemon.name} types={pokemon.types} />
