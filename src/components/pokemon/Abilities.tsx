@@ -1,6 +1,10 @@
 import { PokemonDetailsResponse } from '@/types/Pokemon'
 
-export default function Abilities({ abilities }: { abilities: PokemonDetailsResponse['abilities'] }) {
+type AbilitiesProps = {
+  abilities: PokemonDetailsResponse['abilities']
+}
+
+export default function Abilities({ abilities }: AbilitiesProps) {
   return (
     <>
       <h3 className="fs-6 font-bold">Abilities</h3>

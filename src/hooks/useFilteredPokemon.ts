@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { usePagination } from '@/hooks/usePagination'
 import { usePokemonDetails } from '@/hooks/usePokemonDetails'
 import { usePokemonList } from '@/hooks/usePokemonList'

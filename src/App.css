@@ -8,6 +8,7 @@
     --pokemon-badges-text: #0072ee;
     --pokemon-stats-bg: #f2f3f5;
     --pokemon-details-text: #424a52;
+    --bs-breadcrumb-divider: url("../src/assets/chevron.svg");
 }
 
 .bg-card {
