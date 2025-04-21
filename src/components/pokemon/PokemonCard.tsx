@@ -1,5 +1,5 @@
 import type { PokemonCardData } from '@/types/Pokemon'
-import CardLink from '@/components/common/CardLink'
+import CardLinkWithImage from '@/components/common/CardLinkWithImage'
 import { capitalize } from '@/utils/string'
 
 type PokemonCardProps = {
@@ -8,7 +8,7 @@ type PokemonCardProps = {
 
 export default function PokemonCard({ pokemon }: PokemonCardProps) {
   return (
-    <CardLink
+    <CardLinkWithImage
       text={capitalize(pokemon.name)}
       imageUrl={pokemon.imageUrl}
       altText={`Image of ${pokemon.name}`}

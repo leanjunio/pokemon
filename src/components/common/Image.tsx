@@ -1,7 +1,7 @@
 type ImageProps = {
   altText: string
   imageUrl: string
-  variant?: 'card' | 'details'
+  variant?: 'list' | 'details'
 }
 
 /**
@@ -11,7 +11,7 @@ type ImageProps = {
  * @param {string} imageUrl - The URL of the image
  * @param {string} variant - The variant of the image
  */
-export default function Image({ altText, imageUrl, variant = 'card' }: ImageProps) {
+export default function Image({ altText, imageUrl, variant = 'list' }: ImageProps) {
   return (
     <img alt={altText} src={imageUrl} className={`bg-card px-4 ${variant === 'details' ? 'py-5' : 'py-3'} mw-100`} />
   )
