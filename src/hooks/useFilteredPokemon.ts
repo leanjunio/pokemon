@@ -12,10 +12,10 @@ import { useSortPokemon } from '@/hooks/useSortPokemon'
  * @returns The filtered and paginated pokemon results
  */
 export function useFilteredPokemon(search: string) {
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(POKEMON_CONFIG.DEFAULT_PAGE as number)
 
   useEffect(() => {
-    setCurrentPage(1)
+    setCurrentPage(POKEMON_CONFIG.DEFAULT_PAGE)
   }, [search])
 
   const { data: pokemonList = [], isLoading: isLoadingPokemonList, isError: isErrorPokemonList } = usePokemonList()

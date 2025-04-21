@@ -10,6 +10,7 @@ export const POKEMON_CONFIG = {
   MAX_VISIBLE_PAGES: 5,
   TOTAL_POKEMON: 1302,
   DEFAULT_SORT_BY: 'asc',
+  DEFAULT_PAGE: 1,
 } as const
 
 export const QUERY_CONFIG = {
