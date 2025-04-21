@@ -1,4 +1,4 @@
-import PaginationButton from './Pagination/PaginationButton'
+import PaginationButton from './PaginationButton'
 
 type PaginationProps = {
   currentPage: number

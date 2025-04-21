@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Pagination from '@/components/common/Pagination'
+import Pagination from '@/components/common/Pagination/Pagination'
 import SearchPokemon from '@/components/pokemon/SearchPokemon'
 import { useFilteredPokemon } from '@/hooks/useFilteredPokemon'
 import PokemonList from '@/components/pokemon/PokemonList'
