@@ -6,13 +6,14 @@ type PaginationProps = {
     goToLastPage: () => void
     pageNumbers: number[]
   }
+  isDisabled: boolean
 }
 
-export default function Pagination({ currentPage, onPageChange, navigation }: PaginationProps) {
+export default function Pagination({ currentPage, onPageChange, navigation, isDisabled }: PaginationProps) {
   return (
     <nav className="d-flex justify-content-center" aria-label="Page navigation example">
       <ul className="pagination bg-transparent">
-        <li className="page-item">
+        <li className={`page-item ${isDisabled ? 'disabled' : ''}`}>
           <a className="page-link" href="#" aria-label="Previous" onClick={navigation.goToFirstPage}>
             <span aria-hidden="true">&laquo;</span>
           </a>
@@ -24,7 +25,7 @@ export default function Pagination({ currentPage, onPageChange, navigation }: Pa
             </a>
           </li>
         ))}
-        <li className="page-item">
+        <li className={`page-item ${isDisabled ? 'disabled' : ''}`}>
           <a className="page-link" href="#" aria-label="Next" onClick={navigation.goToLastPage}>
             <span aria-hidden="true">&raquo;</span>
           </a>

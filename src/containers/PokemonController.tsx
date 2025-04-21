@@ -16,7 +16,12 @@ export default function PokemonController() {
     <>
       <SearchPokemon onSearch={setSearch} />
       <PokemonList isLoading={isLoading} pokemon={pokemon} />
-      <Pagination currentPage={currentPage} onPageChange={onPageChange} navigation={navigation} />
+      <Pagination
+        isDisabled={pokemon?.length === 0}
+        currentPage={currentPage}
+        onPageChange={onPageChange}
+        navigation={navigation}
+      />
     </>
   )
 }
