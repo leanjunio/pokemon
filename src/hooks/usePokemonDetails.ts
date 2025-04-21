@@ -17,7 +17,7 @@ export function usePokemonDetails(pokemonUrls: PokemonUrls[]) {
       isLoading: results.some((r) => r.isPending),
       isSuccess: results.every((r) => r.isSuccess),
       isError: results.some((r) => r.isError),
-      data: results.every((r) => r.isSuccess) ? results.map((r) => r.data) : undefined,
+      data: results.every((r) => r.isSuccess) ? results.map((r) => r.data!) : undefined,
     }),
   })
 }
