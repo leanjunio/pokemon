@@ -9,7 +9,7 @@ export const handleResponse = <T>(response: AxiosResponse<T>) => {
   return response.data
 }
 
-export const apiRequest = async <TResponse, TData = unknown>(
+export const createApiRequest = async <TResponse, TData = unknown>(
   url: string,
   method: Method,
   params?: Record<string, unknown>,

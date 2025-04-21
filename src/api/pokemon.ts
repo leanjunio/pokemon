@@ -1,5 +1,5 @@
 import { PokemonListResponse, PokemonDetailsResponse } from '@/types/Pokemon'
-import { apiRequest } from '@/api/client'
+import { createApiRequest } from '@/api/client'
 import { API_CONFIG, POKEMON_CONFIG } from '@/lib/constants'
 
 const PARAMS = {
@@ -12,7 +12,7 @@ export const pokemonApi = {
    * @returns Promise<PokemonUrls[]> Array of Pokemon with name and url
    */
   getPokemonList: async () => {
-    const response = await apiRequest<PokemonListResponse>(API_CONFIG.ENDPOINTS.POKEMON_LIST, 'GET', PARAMS.list)
+    const response = await createApiRequest<PokemonListResponse>(API_CONFIG.ENDPOINTS.POKEMON_LIST, 'GET', PARAMS.list)
     return response.results
   },
 
@@ -22,7 +22,7 @@ export const pokemonApi = {
    * @returns Promise<PokemonDetailsResponse> Detailed Pokemon data including stats, types, abilities etc.
    */
   getPokemonDetails: async (url: string) => {
-    const response = await apiRequest<PokemonDetailsResponse>(url, 'GET')
+    const response = await createApiRequest<PokemonDetailsResponse>(url, 'GET')
     return response
   },
 }
