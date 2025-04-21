@@ -1,7 +1,7 @@
 import { useParams, Navigate } from 'react-router'
 import { PokemonDetailsResponse } from '@/types/Pokemon'
 import { useQueryData } from '@/hooks/useQueryData'
-import PokemonImage from '@/components/pokemon/PokemonImage'
+import Image from '@/components/common/Image'
 import BasicInfo from '@/components/pokemon/BasicInfo'
 import Stats from '@/components/pokemon/Stats'
 import { combineStats } from '@/pokemon/transformation'
@@ -33,11 +33,15 @@ export default function PokemonDetailsController() {
   const formattedStats = getLocalizedStats(allStats)
 
   return (
-    <div className="my-5">
+    <div className="my-3 my-md-4 my-lg-5">
       <Breadcrumb />
       <div className="row justify-content-between">
         <div className="col-12 col-lg-7 text-sm-center text-lg-start mb-3 mb-md-5">
-          <PokemonImage altText={pokemon.name} imageUrl={pokemon.sprites.other['official-artwork'].front_default} />
+          <Image
+            altText={pokemon.name}
+            imageUrl={pokemon.sprites.other['official-artwork'].front_default}
+            variant="details"
+          />
         </div>
         <div className="col-12 col-lg-5 px-md-5 px-lg-0">
           <div className="row">
