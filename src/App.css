@@ -5,7 +5,7 @@
     --bs-image-gray-border: #d0d5da;
     --pokemon-list-bg: #ebedf0;
     --pokemon-badges-bg: #e6f1fd;
-    --pokemon-badges-text: #0072ee;
+    --pokemon-primary-color: #0072ee;
     --pokemon-stats-bg: #f2f3f5;
     --pokemon-details-text: #424a52;
     --bs-breadcrumb-divider: url("../src/assets/chevron.svg");
@@ -13,6 +13,15 @@
 
 .bg-card {
     background-color: var(--bs-image-gray);
+}
+
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--pokemon-primary-color);
 }
 
 .bg-card-border {
@@ -33,7 +42,7 @@
 
 .bg-badges {
     background-color: var(--pokemon-badges-bg);
-    color: var(--pokemon-badges-text);
+    color: var(--pokemon-primary-color);
 }
 
 .bg-stats {
