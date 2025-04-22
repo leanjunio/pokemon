@@ -4,6 +4,7 @@ type SearchProps = {
   name: string
   placeholder: string
   onSearch: (search: string) => void
+  isDisabled: boolean
 }
 
 /**
@@ -13,7 +14,7 @@ type SearchProps = {
  * @param {string} placeholder - The placeholder text of the search input
  * @param {function} onSearch - The function to call when the search input changes
  */
-export default function Search({ name, placeholder, onSearch }: SearchProps) {
+export default function Search({ name, placeholder, onSearch, isDisabled }: SearchProps) {
   return (
     <form role="search" className="my-5">
       <label className="visually-hidden" htmlFor={name}>
@@ -29,6 +30,7 @@ export default function Search({ name, placeholder, onSearch }: SearchProps) {
           id={name}
           placeholder={placeholder}
           onChange={(e) => onSearch(e.target.value)}
+          disabled={isDisabled}
         />
       </div>
     </form>

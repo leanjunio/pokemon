@@ -6,15 +6,11 @@ import PokemonList from '@/components/pokemon/PokemonList'
 
 export default function PokemonController() {
   const [search, setSearch] = useState('')
-  const { isLoading, isError, pokemon, onPageChange, currentPage, navigation } = useFilteredPokemon(search)
-
-  if (isError) {
-    return <div>Error</div>
-  }
+  const { isLoading, pokemon, onPageChange, currentPage, navigation, isPending } = useFilteredPokemon(search)
 
   return (
     <>
-      <SearchPokemon onSearch={setSearch} />
+      <SearchPokemon isDisabled={isPending} onSearch={setSearch} />
       <PokemonList isLoading={isLoading} pokemon={pokemon} />
       <Pagination
         isDisabled={pokemon?.length === 0}
