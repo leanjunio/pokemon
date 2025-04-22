@@ -2,6 +2,8 @@ import { PokemonListResponse, PokemonDetailsResponse } from '@/types/Pokemon'
 import { createApiRequest } from '@/api/client'
 import { API_CONFIG, POKEMON_CONFIG } from '@/lib/constants'
 import { PokemonError } from '@/errors/pokemon'
+import { NotFoundError } from '@/errors/api'
+
 const PARAMS = {
   list: { limit: POKEMON_CONFIG.TOTAL_POKEMON },
 }
@@ -20,6 +22,9 @@ export const pokemonApi = {
       )
       return response.results
     } catch (error) {
+      if (error instanceof NotFoundError) {
+        throw error
+      }
       throw new PokemonError('Failed to fetch Pokemon list')
     }
   },
@@ -34,6 +39,9 @@ export const pokemonApi = {
       const response = await createApiRequest<PokemonDetailsResponse>(url, 'GET')
       return response
     } catch (error) {
+      if (error instanceof NotFoundError) {
+        throw error
+      }
       throw new PokemonError('Failed to fetch Pokemon details')
     }
   },

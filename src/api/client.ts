@@ -1,5 +1,6 @@
 import axios, { AxiosResponse, Method } from 'axios'
 import { API_CONFIG } from '@/lib/constants'
+import { NotFoundError } from '@/errors/api'
 
 export const apiClient = axios.create({
   baseURL: API_CONFIG.BASE_URL,
@@ -15,12 +16,20 @@ export const createApiRequest = async <TResponse, TData = unknown>(
   params?: Record<string, unknown>,
   data?: TData,
 ) => {
-  const response: AxiosResponse<TResponse> = await apiClient({
-    method,
-    url,
-    params,
-    data,
-  })
+  try {
+    const response: AxiosResponse<TResponse> = await apiClient({
+      method,
+      url,
+      params,
+      data,
+    })
 
-  return handleResponse<TResponse>(response)
+    return handleResponse<TResponse>(response)
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response?.status === 404 && error.code === 'ERR_BAD_REQUEST') {
+      throw new NotFoundError(`API endpoint not found: ${url}`)
+    }
+
+    throw error
+  }
 }
