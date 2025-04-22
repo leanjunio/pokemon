@@ -2,7 +2,19 @@ import { pokemonApi } from '@/api/pokemon'
 import { PokemonUrls } from '@/types/Pokemon'
 import { useGetList } from '@/hooks/useGetList'
 import { QUERY_CONFIG } from '@/lib/constants'
+import { NotFoundError } from '@/errors/api'
+import { UseQueryOptions } from '@tanstack/react-query'
 
 export function usePokemonList() {
-  return useGetList<PokemonUrls>('pokemon-list', pokemonApi.getPokemonList, QUERY_CONFIG.list.STALE_TIME)
+  const options: Partial<UseQueryOptions<PokemonUrls[], Error>> = {
+    staleTime: QUERY_CONFIG.list.STALE_TIME,
+    retry: (_, error) => {
+      if (error instanceof NotFoundError) {
+        return false
+      }
+      return true
+    },
+  }
+
+  return useGetList<PokemonUrls>('pokemon-list', pokemonApi.getPokemonList, options)
 }
