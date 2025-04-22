@@ -15,6 +15,7 @@ function shouldRetry(count: number, error: Error) {
 export function usePokemonList() {
   const options: Partial<UseQueryOptions<PokemonUrls[], Error>> = {
     staleTime: QUERY_CONFIG.list.STALE_TIME,
+    gcTime: QUERY_CONFIG.list.GC_TIME,
     retry: shouldRetry,
   }
 

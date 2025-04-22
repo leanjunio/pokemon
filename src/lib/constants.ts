@@ -16,5 +16,6 @@ export const POKEMON_CONFIG = {
 export const QUERY_CONFIG = {
   list: {
     STALE_TIME: Infinity,
+    GC_TIME: Infinity,
   },
 } as const
