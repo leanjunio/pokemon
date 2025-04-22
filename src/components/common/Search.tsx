@@ -16,7 +16,7 @@ type SearchProps = {
  */
 export default function Search({ name, placeholder, onSearch, isDisabled }: SearchProps) {
   return (
-    <form role="search" className="my-5">
+    <form role="search" className="my-4 my-lg-5">
       <label className="visually-hidden" htmlFor={name}>
         {name}
       </label>
