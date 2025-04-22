@@ -19,7 +19,7 @@ type CardLinkProps = {
  */
 export default function CardLinkWithImage({ text, imageUrl, altText, to }: CardLinkProps) {
   return (
-    <Link to={to} className="card p-2 rounded-1 bg-card-border text-decoration-none">
+    <Link to={to} className="card card-hover p-2 rounded-1 bg-card-border text-decoration-none">
       <div
         className="bg-card ratio d-flex justify-content-center align-items-center p-3"
         style={{ '--bs-aspect-ratio': '90%' } as React.CSSProperties}
