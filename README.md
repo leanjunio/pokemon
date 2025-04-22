@@ -1,37 +1,57 @@
-## AgencyAnalytics Frontend React Challenge!
+[![npm version](https://badge.fury.io/js/angular2-expandable-list.svg)](https://badge.fury.io/js/angular2-expandable-list)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-Below are the pieces of technology that we have added into this repository for you with a little description.
+# AgencyAnalytics Frontend React Challenge
 
-[React](https://reactjs.org/) is a popular JavaScript library for building user interfaces. The whole app will be built on this, feel free to check out the docs!
+> This project recreates a pokedex application that allows a user to search for and select a pokemon so that they can get more details about it.
 
-[Vite](https://vite.dev/) is a popular build engine that is a standard these days and known for fast setup and build times. 
+## Prerequisites
 
-[PokeApi](https://pokeapi.co/ ) this is the definitive API for all things Pokemon. You will be using this for all of our data during this challenge. So please dig in and give it a test, it doesnt require an API key so you can run api calls directly in browser to test out the responses. 
+### Node / NPM
 
-Mockup is located in the /mockup folder
+This project requires Node.js (version 20 or later) and NPM.
+[Node](http://nodejs.org/) and [NPM](https://npmjs.org/).
 
----
+Please run the following to ensure you have both
 
-### The challenge will have you build a fully functioning react application that is designed to be a a bit of a "pokedex"
+```sh
+$ npm -v && node -v
+10.9.2
+v22.14.0
+```
 
-There are two pages:
+### Docker
 
-## Page 1 ##
-The home page. As the mockup suggests there are all of the following on the home page:
-- A search bar where you can search for Pokemon
-- The home page is paginated
-- The layout is quite simple as far as showing the pokemon and their images.
-- Since this page is the home of the application it should also be performant
+This project requires docker compose locally. [Install Docker Desktop](https://docs.docker.com/compose/install/)
 
-## Page 2 ##
-The second page is a detail screen for the Pokemon, on this page we just show details about each pokemon. This page is quite simple implement it based on the mockup!
+## Installation
 
-## Page 3 ##
-Page three is not covered in the mockups but if you're feeling a bit extra we leave this page up to you if you'd like to add your own flare to the pokedex add this page and give us a small write up about why you added it and why it adds user value to your application. An opportunity to show us a bit of everything, development capabilities, design flare and also your product sense. 
+**BEFORE YOU INSTALL:** please read the [prerequisites](#prerequisites)
 
+Clone the repo locally
 
-### What to expect next ###
+```sh
+$ git clone https://github.com/leanjunio/pokemon.git
+$ cd pokemon
+```
 
-Be prepared and able to answer tough questions about your pokedex, we will expect you to know it inside and out, because you built it after all!
+Run the application through a fresh build
 
+```sh
+$ docker compose -f docker-compose.dev.yml up --build
+```
 
+Once you see the following output, you can go to [http://localhost:5173](http://localhost:5173)
+
+```sh
+Attaching to web-1
+web-1  |
+web-1  | > react-typescript@1.0.0 dev
+web-1  | > vite
+web-1  |
+web-1  |
+web-1  |   VITE v3.0.4  ready in 207 ms
+web-1  |
+web-1  |   ➜  Local:   http://localhost:5173/
+web-1  |   ➜  Network: http://172.19.0.2:5173/
+```
