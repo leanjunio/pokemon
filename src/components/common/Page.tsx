@@ -10,7 +10,7 @@ type PageProps = {
 export default function Page({ bgVariant = 'list', children, className }: PageProps) {
   return (
     <div className={`bg-${bgVariant}`}>
-      <Navbar icon={<PokemonIcon />} />
+      <Navbar to="/" icon={<PokemonIcon />} />
       <main className={className}>{children}</main>
     </div>
   )

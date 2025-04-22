@@ -1,14 +1,17 @@
+import { Link } from 'react-router'
+
 type NavbarProps = {
   icon: React.ReactNode
+  to: string
 }
 
-export default function Navbar({ icon }: NavbarProps) {
+export default function Navbar({ icon, to }: NavbarProps) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top border-bottom">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to={to}>
           {icon}
-        </a>
+        </Link>
       </div>
     </nav>
   )
