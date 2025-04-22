@@ -19,6 +19,13 @@ v22.14.0
 
 ### Docker
 
+Run the following command to check if you have it, you should get something similar if not the exact output as below
+
+```sh
+$ docker -v
+Docker version 27.3.1, build ce12230
+```
+
 This project requires docker compose locally. [Install Docker Desktop](https://docs.docker.com/compose/install/)
 
 ## Installation
